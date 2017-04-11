@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Teste Algoritmos</title>
+</head>
+<body>
+	<p>Por favor acessar o Console (F12 / Aba "Console")</p>
+	<script>
+		// Retorna uma matriz de números inteiros entre os limites definidos como parâmetros
+		function arrayBetween(min, max, limitArray) {
+			limitArray = limitArray || 10;
+			var _arr = new Array();
+			for (var i = 0; i < Math.round(Math.random() * limitArray); i++) {
+				_arr.push(Math.round(Math.random() * 2 * min + max));
+			}
+			return _arr.sort(function(a, b) { return a - b; });
+		}
+
+		// Soma os números pares da matriz
+		function sumArray(arr) {
+			var _sum = 0;
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i] % 2 === 0) {
+					_sum += arr[i];
+				}
+			}
+			return _sum;
+		}
+
+		// Chamada da função definindo os limites
+		var _arr = arrayBetween(-100000, 100000, 100),
+			_sum = sumArray(_arr);
+
+		console.log('Vetor:', _arr);
+		console.log('Resultado do exercício 1:', _sum);
+
+		// Seta a matriz de 3 colunas
+		var _col = 3,
+			_arrCol = new Array();
+
+		// Cria dinâmicamente as variáveis
+		for (var i = 1; i <= _col; i++) {
+			window['_count' + i] = 0;
+		};
+
+		// Monta a matriz de combinações
+		for (var i = 0; i < Math.pow(_arr.length, _col); i++) {
+			var _arrCount = new Array();
+			for (var j = _col - 1; j >= 0; j--) {
+				if (i % Math.pow(_arr.length, j) == 0 && i !== 0) {
+					//var count = '_count' + (-j + _col);
+					window['_count' + (-j + _col)]++;
+					if (window['_count' + (-j + _col)] == _arr.length) {
+						window['_count' + (-j + _col)] = 0;
+					}
+				}
+				_arrCount.push(_arr[window['_count' + (-j + _col)]]);
+			}
+			console.log('Resultado do exercício 2:', _arrCount);
+			_arrCol.push(_arrCount);
+		}
+
+		console.log('Resultado do exercício 2:', _arrCol);
+
+	</script>
+</body>
+</html>
