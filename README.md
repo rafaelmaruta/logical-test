@@ -1,4 +1,4 @@
-## Teste Lógico com Algoritmos
+## Teste Lógico com Algoritmos - 09/2016
 
 Temos um vetor de comprimento indefinido, preenchido com números inteiros aleatórios entre -100000 e 100000.
 
